@@ -1,5 +1,13 @@
 # <img src="src/docs/asciidoc/images/spring-framework.png" width="80" height="80"> Spring Framework
 
+## NOTICE
+该spring源码是基于：（https://github.com/MrSorrow/spring-framework）git项目创建的spring源码，直接git clone之后，
+idea工具参考import-into-idea.md操作说明进行导入到idea进行阅读，
+eclipse工具参考import-into-eclipse.md操作说明导入到eclipse进行阅读，
+spring源码中的思维导图参考（https://github.com/MrSorrow/spring-framework）目录下的mindPics,并进行修改和增注
+修正了（https://github.com/MrSorrow/spring-framework）下载之后，编译不了的问题
+
+
 This is the home of the Spring Framework, the foundation for all
 [Spring projects](https://spring.io/projects). Together the Spring Framework and the family of Spring projects make up what we call "Spring". 
 
@@ -46,3 +54,4 @@ and releases are announced via our [news feed](http://spring.io/blog/category/ne
 
 The Spring Framework is released under version 2.0 of the
 [Apache License](http://www.apache.org/licenses/LICENSE-2.0).
+
