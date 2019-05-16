@@ -20,7 +20,7 @@
 	</bean>
 
 	<!--配置业务bean-->
-	<bean id="actorService" class="guo.ping.jdbc.ActorServiceImpl">
+	<bean id="actorService" class="com.zcs.jdbc.ActorServiceImpl">
 		<!--向属性中注入数据源-->
 		<property name="dataSource" ref="dataSource" />
 	</bean>

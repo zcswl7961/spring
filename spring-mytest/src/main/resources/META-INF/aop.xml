@@ -7,6 +7,6 @@
 
 	<aspects>
 		<!--weave in just this aspect-->
-		<aspect name="guo.ping.aop.ltw.AspectJLTWTest" />
+		<aspect name="com.zcs.aop.ltw.AspectJLTWTest" />
 	</aspects>
 </aspectj>

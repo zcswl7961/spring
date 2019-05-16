@@ -3,13 +3,13 @@
 	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	   xsi:schemaLocation="http://www.springframework.org/schema/beans    http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-	<bean id="user" class="guo.ping.ioc.selfbeanpostprocessor.User">
+	<bean id="user" class="com.zcs.ioc.selfbeanpostprocessor.User">
 		<property name="username" value="haha" />
 	</bean>
 
-	<bean id="user2" class="guo.ping.ioc.selfbeanpostprocessor.User">
+	<bean id="user2" class="com.zcs.ioc.selfbeanpostprocessor.User">
 		<property name="username" value="xixi" />
 	</bean>
 
-	<bean class="guo.ping.ioc.selfbeanpostprocessor.MyBeanPostProcessor" />
+	<bean class="com.zcs.ioc.selfbeanpostprocessor.MyBeanPostProcessor" />
 </beans>

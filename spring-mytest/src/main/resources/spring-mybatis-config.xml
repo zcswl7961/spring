@@ -3,7 +3,7 @@
 <configuration>
 	<!--定义guo.ping.mybatis.Actor的别名，mapper文件中发挥作用-->
 	<typeAliases>
-		<typeAlias type="guo.ping.mybatis.Actor" alias="Actor" />
+		<typeAlias type="com.zcs.mybatis.Actor" alias="Actor" />
 	</typeAliases>
 	<!--定义mapper文件路径-->
 	<mappers>

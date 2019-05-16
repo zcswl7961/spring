@@ -7,7 +7,7 @@
 	<bean class="org.springframework.beans.factory.config.CustomEditorConfigurer">
 		<property name="customEditors">
 			<map>
-				<entry key="java.util.Date" value="guo.ping.ioc.propertieseditor.DatePropertyEditor" />
+				<entry key="java.util.Date" value="com.zcs.ioc.propertieseditor.DatePropertyEditor" />
 			</map>
 		</property>
 	</bean>
@@ -20,7 +20,7 @@
 		<!--</property>-->
 	<!--</bean>-->
 
-	<bean id="user" class="guo.ping.ioc.propertieseditor.User">
+	<bean id="user" class="com.zcs.ioc.propertieseditor.User">
 		<property name="userName" value="wgp" />
 		<property name="date" value="2018-10-01" />
 	</bean>

@@ -17,9 +17,9 @@
 		</property>
     </bean>
 
-	<bean id="countTimeInterceptor" class="guo.ping.mvctest.interceptor.CountTimeInterceptor" />
+	<bean id="countTimeInterceptor" class="com.zcs.mvctest.interceptor.CountTimeInterceptor" />
 
-    <bean id="userController" class="guo.ping.mvctest.controller.UserController" />
-	<bean id="modifyController" class="guo.ping.mvctest.controller.ModifyController" />
+    <bean id="userController" class="com.zcs.mvctest.controller.UserController" />
+	<bean id="modifyController" class="com.zcs.mvctest.controller.ModifyController" />
 
 </beans>

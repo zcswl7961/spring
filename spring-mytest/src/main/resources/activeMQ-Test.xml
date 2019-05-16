@@ -22,7 +22,7 @@
 		</constructor-arg>
 	</bean>
 
-	<bean id="myMessageListener" class="guo.ping.activemq.MyMessageListener" />
+	<bean id="myMessageListener" class="com.zcs.activemq.MyMessageListener" />
 
 	<bean id="javaConsumer" class="org.springframework.jms.listener.DefaultMessageListenerContainer">
 		<property name="connectionFactory" ref="connectionFactory" />

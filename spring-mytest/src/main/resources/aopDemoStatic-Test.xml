@@ -9,8 +9,8 @@
 
 	<aop:aspectj-autoproxy />
 
-	<bean id="test" class="guo.ping.aop.ltw.TestLTWBean" />
-	<bean class="guo.ping.aop.ltw.AspectJLTWTest" />
+	<bean id="test" class="com.zcs.aop.ltw.TestLTWBean" />
+	<bean class="com.zcs.aop.ltw.AspectJLTWTest" />
 
 	<context:load-time-weaver />
 

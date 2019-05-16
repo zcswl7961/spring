@@ -2,6 +2,6 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
 	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	   xsi:schemaLocation="http://www.springframework.org/schema/beans    http://www.springframework.org/schema/beans/spring-beans.xsd">
-	<bean id="hello" class="guo.ping.ioc.aware.Hello" />
-	<bean id="beanFactory" class="guo.ping.ioc.aware.TestAware" />
+	<bean id="hello" class="com.zcs.ioc.aware.Hello" />
+	<bean id="beanFactory" class="com.zcs.ioc.aware.TestAware" />
 </beans>

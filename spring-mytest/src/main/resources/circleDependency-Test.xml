@@ -3,26 +3,26 @@
 	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	   xsi:schemaLocation="http://www.springframework.org/schema/beans    http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-	<bean id="a" class="guo.ping.ioc.circledependency.A">
+	<bean id="a" class="com.zcs.ioc.circledependency.A">
 		<constructor-arg ref="b" />
 	</bean>
 
-	<bean id="b" class="guo.ping.ioc.circledependency.B">
+	<bean id="b" class="com.zcs.ioc.circledependency.B">
 		<constructor-arg ref="c" />
 	</bean>
 
-	<bean id="c" class="guo.ping.ioc.circledependency.C">
+	<bean id="c" class="com.zcs.ioc.circledependency.C">
 	</bean>
 
-	<bean id="f" class="guo.ping.ioc.circledependency.F">
+	<bean id="f" class="com.zcs.ioc.circledependency.F">
 		<constructor-arg ref="d" />
 	</bean>
 
-	<bean id="d" class="guo.ping.ioc.circledependency.D">
+	<bean id="d" class="com.zcs.ioc.circledependency.D">
 		<property name="e" ref="e" />
 	</bean>
 
-	<bean id="e" class="guo.ping.ioc.circledependency.E">
+	<bean id="e" class="com.zcs.ioc.circledependency.E">
 		<property name="f" ref="f" />
 	</bean>
 

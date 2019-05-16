@@ -6,12 +6,12 @@
 	<bean id="conversionService" class="org.springframework.context.support.ConversionServiceFactoryBean">
 		<property name="converters">
 			<list>
-				<bean class="guo.ping.ioc.converter.MyConverter" />
+				<bean class="com.zcs.ioc.converter.MyConverter" />
 			</list>
 		</property>
 	</bean>
 
-	<bean id="user" class="guo.ping.ioc.propertieseditor.User">
+	<bean id="user" class="com.zcs.ioc.propertieseditor.User">
 		<property name="userName" value="wgp" />
 		<property name="date" value="2018-10-01" />
 	</bean>
