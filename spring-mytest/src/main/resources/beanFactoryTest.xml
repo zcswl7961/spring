@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans    http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<import resource="customTag-Test.xml"/>
+
+	<alias name="myTestBean" alias="haha, xixi" />
+
+	<bean id="myTestBean" class="guo.ping.ioc.bean.MyTestBean">
+		<description>这是myTestBean</description>
+		<property name="testStr" value="haha" />
+	</bean>
+
+	<bean id="testCarFactoryBean" class="guo.ping.ioc.loadbean.CarFactoryBean">
+		<property name="carInfo" value="超跑,400,200000" />
+	</bean>
+</beans>
