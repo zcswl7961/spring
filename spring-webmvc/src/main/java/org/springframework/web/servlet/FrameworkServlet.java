@@ -552,6 +552,7 @@ public abstract class FrameworkServlet extends HttpServletBean implements Applic
 
 	/**
 	 * 创建或刷新WebApplicationContext实例(子容器)并对servlet功能所使用的变量进行初始化
+	 * 创建Spring MVC子容器
 	 * Initialize and publish the WebApplicationContext for this servlet.
 	 * <p>Delegates to {@link #createWebApplicationContext} for actual creation
 	 * of the context. Can be overridden in subclasses.
@@ -562,6 +563,7 @@ public abstract class FrameworkServlet extends HttpServletBean implements Applic
 	 */
 	protected WebApplicationContext initWebApplicationContext() {
 		// 从ServletContext中获取父容器WebApplicationContext，如果没有指定<context-param>，则为空
+		// 父容器实际上是由ContextLoaderListener加载时初始化的WebApplicationContext
 		WebApplicationContext rootContext =
 				WebApplicationContextUtils.getWebApplicationContext(getServletContext());
 
@@ -676,7 +678,7 @@ public abstract class FrameworkServlet extends HttpServletBean implements Applic
 					"': custom WebApplicationContext class [" + contextClass.getName() +
 					"] is not of type ConfigurableWebApplicationContext");
 		}
-		// 通过反射方式实例化contextClass，创建出一个容器
+		// 通过反射方式实例化contextClass，创建出一个容器，这个是<servlet> SPRING MVC容器
 		ConfigurableWebApplicationContext wac =
 				(ConfigurableWebApplicationContext) BeanUtils.instantiateClass(contextClass);
 

@@ -20,7 +20,9 @@ import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 
 /**
- * 启动Web容器时，自动装配ApplicationContext的配置信息
+ * 启动Web容器时，自动装配ApplicationContext的配置信息，web容器启动的时候，会自动启动ServlertContextListener中的
+ * contextInitialized（）方法
+ * 销毁的时候会执行contextDestroyed
  * Bootstrap listener to start up and shut down Spring's root {@link WebApplicationContext}.
  * Simply delegates to {@link ContextLoader} as well as to {@link ContextCleanupListener}.
  *

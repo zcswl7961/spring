@@ -4,12 +4,18 @@
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
          version="3.1">
 
-	<!--Spring配置文件-->
+	<!--<context-param>注解最终会以map的形式key：param-name value：param-value加入到web容器上下文中ServletContext -->
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
 		<param-value>classpath:spring-config.xml</param-value>
 	</context-param>
 
+
+	<!-- web中servlet的配置-->
+	<!--
+             servlet配置 : 前端是通过网址来访问服务器
+                           需要给servlet对象配置一个外部访问的路径
+    -->
 	<servlet>
 		<servlet-name>mvc-test</servlet-name>
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
@@ -26,6 +32,7 @@
 		<url-pattern>/</url-pattern>
 	</servlet-mapping>
 
+	<!-- web容器的监听器，初始化WebApplicationContext -->
 	<listener>
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
