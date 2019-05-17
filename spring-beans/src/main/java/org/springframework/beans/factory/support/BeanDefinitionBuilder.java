@@ -203,6 +203,7 @@ public final class BeanDefinitionBuilder {
 	/**
 	 * Add a reference to a named bean as a constructor arg.
 	 * @see #addConstructorArgValue(Object)
+	 * 添加索引构造函数arg值。当前索引在内部进行跟踪，所有添加的内容都在当前位置。
 	 */
 	public BeanDefinitionBuilder addConstructorArgReference(String beanName) {
 		this.beanDefinition.getConstructorArgumentValues().addIndexedArgumentValue(
