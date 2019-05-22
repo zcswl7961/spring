@@ -164,7 +164,9 @@ public abstract class ClassUtils {
 
 	/**
 	 * 获取默认的ClassLoader，
-	 * 顺序：Thread.currentThread().getContextClassLoader()>ClassUtils.class.getClassLoader()>ClassLoader.getSystemClassLoader()
+	 * 顺序：Thread.currentThread().getContextClassLoader()
+	 * 		>ClassUtils.class.getClassLoader()>
+	 * 		ClassLoader.getSystemClassLoader()
 	 * Return the default ClassLoader to use: typically the thread context
 	 * ClassLoader, if available; the ClassLoader that loaded the ClassUtils
 	 * class will be used as fallback.

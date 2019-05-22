@@ -39,6 +39,7 @@ import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Component;
 
 /**
+ * 用于标识@Configuration类的使用工具
  * Utilities for identifying {@link Configuration} classes.
  *
  * @author Chris Beams
@@ -85,7 +86,9 @@ abstract class ConfigurationClassUtils {
 		if (className == null || beanDef.getFactoryMethodName() != null) {
 			return false;
 		}
-
+		/**
+		 * 抽取该类的注解数据，封装为对应的AnnotationMetadata
+		 */
 		AnnotationMetadata metadata;
 		if (beanDef instanceof AnnotatedBeanDefinition &&
 				className.equals(((AnnotatedBeanDefinition) beanDef).getMetadata().getClassName())) {
@@ -112,9 +115,14 @@ abstract class ConfigurationClassUtils {
 			}
 		}
 
+		// 是否存在@Configuration注解
+		// 追加对应的解析的BeanDefinition属性 ，
+		// attributeName:org.springframework.context.annotation.ConfigurationClassPostProcessor.configurationClass attributeValue:full
 		if (isFullConfigurationCandidate(metadata)) {
 			beanDef.setAttribute(CONFIGURATION_CLASS_ATTRIBUTE, CONFIGURATION_CLASS_FULL);
 		}
+		// 存在任意一个注解Component，ComponentScan，Import，ImportResource 类上的
+		// 存在任意一个含有@Bean注解的方法
 		else if (isLiteConfigurationCandidate(metadata)) {
 			beanDef.setAttribute(CONFIGURATION_CLASS_ATTRIBUTE, CONFIGURATION_CLASS_LITE);
 		}
