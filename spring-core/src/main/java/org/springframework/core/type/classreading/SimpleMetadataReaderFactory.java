@@ -64,14 +64,11 @@ public class SimpleMetadataReaderFactory implements MetadataReaderFactory {
 
 
 	/**
-	 * Return the ResourceLoader that this MetadataReaderFactory has been
-	 * constructed with.
+	 * 根据当前指定的className获取对应class文件的Resource对象，封装为SimpleMetadataReader
+	 * @param className the class name (to be resolved to a ".class" file)
+	 * @return
+	 * @throws IOException
 	 */
-	public final ResourceLoader getResourceLoader() {
-		return this.resourceLoader;
-	}
-
-
 	@Override
 	public MetadataReader getMetadataReader(String className) throws IOException {
 		try {
@@ -96,6 +93,15 @@ public class SimpleMetadataReaderFactory implements MetadataReaderFactory {
 			}
 			throw ex;
 		}
+	}
+
+
+	/**
+	 * Return the ResourceLoader that this MetadataReaderFactory has been
+	 * constructed with.
+	 */
+	public final ResourceLoader getResourceLoader() {
+		return this.resourceLoader;
 	}
 
 	@Override

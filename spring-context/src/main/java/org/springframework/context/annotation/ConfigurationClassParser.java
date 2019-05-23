@@ -160,6 +160,10 @@ class ConfigurationClassParser {
 	}
 
 
+	/**
+	 *
+	 * @param configCandidates 被@Configuration ，@Bean ，@Import，@ImportResource，@Component修饰的类
+	 */
 	public void parse(Set<BeanDefinitionHolder> configCandidates) {
 		this.deferredImportSelectors = new LinkedList<>();
 
@@ -264,6 +268,11 @@ class ConfigurationClassParser {
 		// Recursively process any member (nested) classes first
 		processMemberClasses(configClass, sourceClass);
 
+		/**
+		 * https://www.cnblogs.com/whx7762/p/7885735.html
+		 * 通过@PropertySource注解将properties配置文件中的值存储到Spring的Environment中，Environment接口提供方法去读取配置文件的值
+		 *
+		 */
 		// Process any @PropertySource annotations
 		for (AnnotationAttributes propertySource : AnnotationConfigUtils.attributesForRepeatable(
 				sourceClass.getMetadata(), PropertySources.class,
@@ -276,7 +285,11 @@ class ConfigurationClassParser {
 						"]. Reason: Environment must implement ConfigurableEnvironment");
 			}
 		}
-
+		/**
+		 * @ComponentScan 解析，ComponentScanAnnotationParser解析器
+		 * 首先是解析@Conditional注解（判断该@ComponentScan注解是否继续解析）
+		 *
+		 */
 		// Process any @ComponentScan annotations
 		Set<AnnotationAttributes> componentScans = AnnotationConfigUtils.attributesForRepeatable(
 				sourceClass.getMetadata(), ComponentScans.class, ComponentScan.class);
@@ -293,12 +306,18 @@ class ConfigurationClassParser {
 						bdCand = holder.getBeanDefinition();
 					}
 					if (ConfigurationClassUtils.checkConfigurationClassCandidate(bdCand, this.metadataReaderFactory)) {
+						/**
+						 * 继续检测@ComponentScan解析出来的bean是否为ConfigurationClass类型，然后再进行解析
+						 */
 						parse(bdCand.getBeanClassName(), holder.getBeanName());
 					}
 				}
 			}
 		}
 
+		/**
+		 * 解析@Import
+		 */
 		// Process any @Import annotations
 		processImports(configClass, sourceClass, getImports(sourceClass), true);
 

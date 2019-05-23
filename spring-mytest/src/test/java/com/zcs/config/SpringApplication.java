@@ -1,5 +1,6 @@
 package com.zcs.config;
 
+import com.zcs.configuration.Selector;
 import com.zcs.configuration.TestBean;
 import com.zcs.configuration.TestComponent;
 import com.zcs.configuration.TestConfiguration;
@@ -28,5 +29,9 @@ public class SpringApplication {
 		//使用@Component注解注入的bean
 		TestComponent testComponent = (TestComponent)applicationContext.getBean("testComponent");
 		testComponent.testComponent();
+
+		//@Import Selector
+		Selector selector = (Selector)applicationContext.getBean("com.zcs.configuration.Selector");
+		selector.print();
 	}
 }
