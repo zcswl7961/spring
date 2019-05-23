@@ -23,6 +23,9 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
+ *
+ * 指示带注释的类是“组件”。当使用基于注释的配置和类路径扫描时，这些类被认为是自动检测的候选类。
+ * {@link org.springframework.stereotype.Service @Service}  {@link org.springframework.stereotype.Controller @Controller}
  * Indicates that an annotated class is a "component".
  * Such classes are considered as candidates for auto-detection
  * when using annotation-based configuration and classpath scanning.

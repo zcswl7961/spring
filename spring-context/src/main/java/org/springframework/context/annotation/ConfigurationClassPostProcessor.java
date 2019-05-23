@@ -260,13 +260,19 @@ public class ConfigurationClassPostProcessor implements BeanDefinitionRegistryPo
 	/**
 	 * Build and validate a configuration model based on the registry of
 	 * {@link Configuration} classes.
-	 * 遍历iod容器中的所有已解析的beanDefinitions，从beanDefinitions中找到Configuration类加入到configCandidates中
+	 * 遍历ioc容器中的所有已解析的beanDefinitions，从beanDefinitions中找到Configuration类加入到configCandidates中
 	 * （1）被@Configuration或者包含@Bean，@Component，@ComponentScan,@Import,@ImportResource注解的类
 	 * ConfigurationClassUtils.checkConfigurationClassCandidate(beanDefintion,this.metadataReaderFactorty)
 	 * （2）根据@Order对configCandidates列表进行排序
 	 * （3）遍历configCandidates,使用委托类ConfigurationClassParse解析配置项，包含@PropertySource注解解析，@ComponentScan注解解析
 	 * @Import 注解解析，@Bean注解解析
 	 * （4）遍历configCandidates，使用委托类ConfigurationClassBeanDefinitionReader注册解析好的beanDefinitioin
+	 *
+	 * 	关于@Component的使用
+	 *	在ConfigurationClassPostProcessor解析的时候，会认为带@Component注解的类为Configuration的类，进行解析，
+	 *	但是在使用委托类ConfigurationClassParse进行解析的时候并不包含@Component的解析，这是为什么？
+	 * 答：使用@Component注解类时，ioc会认为他是一个组件，当使用基于注释的配置和类路径扫描时，这些类被认为是自动检测的候选类。
+	 * 查看{@link org.springframework.stereotype.Component @Component} 代码注解
 	 *
 	 */
 	public void processConfigBeanDefinitions(BeanDefinitionRegistry registry) {
@@ -330,6 +336,10 @@ public class ConfigurationClassPostProcessor implements BeanDefinitionRegistryPo
 			configClasses.removeAll(alreadyParsed);
 
 			// Read the model and create bean definitions based on its content
+			// 读取模型并根据其内容创建bean定义
+			/**
+			 * 4、遍历configCandidates，使用委托类ConfigurationClassBeanDefinitionReader注册解析好的BeanDefinition
+			 */
 			if (this.reader == null) {
 				this.reader = new ConfigurationClassBeanDefinitionReader(
 						registry, this.sourceExtractor, this.resourceLoader, this.environment,

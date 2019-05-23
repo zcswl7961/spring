@@ -1,9 +1,6 @@
 package com.zcs.configuration;
 
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Import;
+import org.springframework.context.annotation.*;
 
 /**
  * @author: zhoucg
@@ -11,7 +8,9 @@ import org.springframework.context.annotation.Import;
  */
 @Configuration
 @ComponentScan(basePackages = "com.zcs.configuration")
+@ImportResource
 @Import(AutoConfigurationSelector.class)
+//@Import(NormalImportClass.class) @Import 普通类
 public class TestConfiguration {
 
 	@Bean

@@ -1,9 +1,6 @@
 package com.zcs.config;
 
-import com.zcs.configuration.Selector;
-import com.zcs.configuration.TestBean;
-import com.zcs.configuration.TestComponent;
-import com.zcs.configuration.TestConfiguration;
+import com.zcs.configuration.*;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -33,5 +30,17 @@ public class SpringApplication {
 		//@Import Selector
 		Selector selector = (Selector)applicationContext.getBean("com.zcs.configuration.Selector");
 		selector.print();
+
+		//@Import normal class
+//		NormalImportClass normalImportClass = (NormalImportClass) applicationContext.getBean("com.zcs.configuration.NormalImportClass");
+//		normalImportClass.print();
 	}
+
+	@Test
+	public void componentTest() {
+		ApplicationContext applicationContext = new AnnotationConfigApplicationContext(NotConfigurationTest.class);
+		applicationContext.getBean("notConfigurationTest");
+	}
+
+
 }

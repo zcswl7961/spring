@@ -314,9 +314,17 @@ class ConfigurationClassParser {
 				}
 			}
 		}
+		/**
+		 * 测试
+		 */
+		BeanDefinitionRegistry beanDefinitionRegistry = this.registry;
+		String[] beanDefinitions = beanDefinitionRegistry.getBeanDefinitionNames();
+		for(String beanDefinition : beanDefinitions) {
+			logger.debug("[zhoucg Test]   current haven load BeanDefinition：["+beanDefinition+"]");
+		}
 
 		/**
-		 * 解析@Import
+		 * 解析@Import，
 		 */
 		// Process any @Import annotations
 		processImports(configClass, sourceClass, getImports(sourceClass), true);
@@ -559,6 +567,10 @@ class ConfigurationClassParser {
 		}
 	}
 
+	/**
+	 * 根据之前parse方法解析到@Imoport中value为ImportSelector的结果，进行处理{@link deferredImportSelectors}
+	 *
+	 */
 	private void processDeferredImportSelectors() {
 		List<DeferredImportSelectorHolder> deferredImports = this.deferredImportSelectors;
 		this.deferredImportSelectors = null;
@@ -566,6 +578,11 @@ class ConfigurationClassParser {
 			return;
 		}
 
+		/**
+		 * 最终调用自定义的ImportSelector中的selectImports（）
+		 * String[] selectImports(AnnotationMetadata importingClassMetadata);
+		 * 这个简直是九曲十八弯，，，，，，
+		 */
 		deferredImports.sort(DEFERRED_IMPORT_COMPARATOR);
 		Map<Object, DeferredImportSelectorGrouping> groupings = new LinkedHashMap<>();
 		Map<AnnotationMetadata, ConfigurationClass> configurationClasses = new HashMap<>();
@@ -607,6 +624,17 @@ class ConfigurationClassParser {
 		return group;
 	}
 
+	/**
+	 * @Import 的解析分三种情况
+	 * value：
+	 * 		1，ImportSelector类型
+	 * 		2，ImportBeanDefinitionRegistrar
+	 * 		3，普通类
+	 * @param configClass
+	 * @param currentSourceClass
+	 * @param importCandidates
+	 * @param checkForCircularImports
+	 */
 	private void processImports(ConfigurationClass configClass, SourceClass currentSourceClass,
 			Collection<SourceClass> importCandidates, boolean checkForCircularImports) {
 
@@ -625,6 +653,9 @@ class ConfigurationClassParser {
 						// Candidate class is an ImportSelector -> delegate to it to determine imports
 						Class<?> candidateClass = candidate.loadClass();
 						ImportSelector selector = BeanUtils.instantiateClass(candidateClass, ImportSelector.class);
+						/**
+						 * 判断@Import 的resource是否为Aware，加入对应的register environment对象，
+						 */
 						ParserStrategyUtils.invokeAwareMethods(
 								selector, this.environment, this.resourceLoader, this.registry);
 						if (this.deferredImportSelectors != null && selector instanceof DeferredImportSelector) {
