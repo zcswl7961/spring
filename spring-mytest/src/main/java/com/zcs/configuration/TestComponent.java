@@ -1,5 +1,6 @@
 package com.zcs.configuration;
 
+import org.springframework.context.annotation.Import;
 import org.springframework.stereotype.Component;
 
 /**
@@ -7,6 +8,7 @@ import org.springframework.stereotype.Component;
  * @date: 2019-05-09
  */
 @Component
+@Import(AutoConfigurationSelector.class)
 public class TestComponent {
 
 	public void testComponent() {

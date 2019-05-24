@@ -9,7 +9,7 @@ import org.springframework.context.annotation.*;
 @Configuration
 @ComponentScan(basePackages = "com.zcs.configuration")
 @ImportResource
-@Import(AutoConfigurationSelector.class)
+//@Import(AutoConfigurationSelector.class)
 //@Import(NormalImportClass.class) @Import 普通类
 public class TestConfiguration {
 
