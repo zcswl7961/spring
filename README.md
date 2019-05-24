@@ -1,11 +1,11 @@
 # <img src="src/docs/asciidoc/images/spring-framework.png" width="80" height="80"> Spring Framework
 
 ## NOTICE
-该spring源码是基于：（https://github.com/MrSorrow/spring-framework） git项目创建的spring源码，直接git clone之后，
+该spring源码是基于：spring-Framework 5， 并结合（https://github.com/MrSorrow/spring-framework） 项目创建的spring阅读源码，直接git clone之后，
 idea工具参考import-into-idea.md操作说明进行导入到idea进行阅读，
 eclipse工具参考import-into-eclipse.md操作说明导入到eclipse进行阅读，
 spring源码中的思维导图参考（https://github.com/MrSorrow/spring-framework）  目录下的mindPics,并进行修改和增注
-修正了（https://github.com/MrSorrow/spring-framework）  下载之后，编译不了的问题
+修正了，spring-framwork5原始代码下载之后，编译不了的问题(删除了内部的一些gradle的引用)  基于gradle3.5  idea 2017.1版本  
 
 
 This is the home of the Spring Framework, the foundation for all
