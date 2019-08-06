@@ -14,7 +14,7 @@ public class ApplicationContextTest {
 
 	@Test
 	public void test() {
-		ApplicationContext applicationContext = new ClassPathXmlApplicationContext("applicationContext.xml");
+		ApplicationContext applicationContext = new ClassPathXmlApplicationContext("${config}");
 		Hello hello = (Hello) applicationContext.getBean("hello");
 		hello.say();
 

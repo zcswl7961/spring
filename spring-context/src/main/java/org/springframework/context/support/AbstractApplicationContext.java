@@ -546,7 +546,7 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader
 
 				/**
 				 * 新增加的一个定义，spring中对于BeanFactoryPostProcessor的典型的使用：PropertyPlaceholderConfigurer
-						*/
+				 */
 				// Invoke factory processors registered as beans in the context.
 				// 激活各种BeanFactory处理器
 				invokeBeanFactoryPostProcessors(beanFactory);

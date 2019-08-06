@@ -1,4 +1,3 @@
-<?xml version='1.0' encoding='UTF-8' ?>
 <beans xmlns="http://www.springframework.org/schema/beans"
 	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	   xsi:schemaLocation="http://www.springframework.org/schema/beans    http://www.springframework.org/schema/beans/spring-beans.xsd">
@@ -15,4 +14,16 @@
 	<bean id="testCarFactoryBean" class="com.zcs.ioc.loadbean.CarFactoryBean">
 		<property name="carInfo" value="超跑,400,200000" />
 	</bean>
+
+	<bean name="userDAO" class="com.zcs.ioc.bean.UserDAOImpl">
+		<property name="daoId" value="1"></property>
+	</bean>
+
+	<bean name="userDAO2" class="com.zcs.ioc.bean.UserDAOImpl">
+		<property name="daoId" value="2"></property>
+	</bean>
+
+	<bean id="userService" class="com.zcs.ioc.bean.UserService"  autowire="byName"><!-- 这里的byName是按照属性名进行匹配 这里我们并没有注入UserDAO 但是你的UserService属性名称是UserDAO 所以就相当于 你注入了UserDAO-->
+	</bean>
+
 </beans>

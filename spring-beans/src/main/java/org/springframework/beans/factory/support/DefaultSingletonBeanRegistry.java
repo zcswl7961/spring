@@ -38,6 +38,8 @@ import org.springframework.util.Assert;
 import org.springframework.util.StringUtils;
 
 /**
+ * 对接口SingletonBeanRegistry的实现
+ * 对单例的注册与获取
  * Generic registry for shared bean instances, implementing the
  * {@link org.springframework.beans.factory.config.SingletonBeanRegistry}.
  * Allows for registering singleton instances that should be shared
@@ -70,13 +72,14 @@ import org.springframework.util.StringUtils;
  */
 public class DefaultSingletonBeanRegistry extends SimpleAliasRegistry implements SingletonBeanRegistry {
 
-	/** 用于保存BeanName和创建bean实例之间的关系 Cache of singleton objects: bean name to bean instance. */
+
+	/** 用于保存BeanName和创建bean实例之间的关系 （一级缓存）Cache of singleton objects: bean name to bean instance. */
 	private final Map<String, Object> singletonObjects = new ConcurrentHashMap<>(256);
 
-	/** 用于保存BeanName和创建bean的工厂之间的关系 Cache of singleton factories: bean name to ObjectFactory. */
+	/** 用于保存BeanName和创建bean的工厂之间的关系（二级缓存） Cache of singleton factories: bean name to ObjectFactory. */
 	private final Map<String, ObjectFactory<?>> singletonFactories = new HashMap<>(16);
 
-	/** 存放的是【早期】的单例 bean 的映射，它与 {@link #singletonObjects} 的区别区别在，于 earlySingletonObjects 中存放的 bean 不一定是完整的。
+	/** 存放的是【早期】的单例 bean 的映射，（三级缓存）它与 {@link #singletonObjects} 的区别区别在，于 earlySingletonObjects 中存放的 bean 不一定是完整的。
 	 * 从 {@link #getSingleton(String)} 方法中，中我们可以了解，bean 在创建过程中就已经加入到 earlySingletonObjects 中了，所以当在 bean 的创建过程中就可以通过 getBean() 方法获取。这个 Map 也是解决【循环依赖】的关键所在。
 	 * Cache of early singleton objects: bean name to bean instance. */
 	private final Map<String, Object> earlySingletonObjects = new HashMap<>(16);
@@ -88,15 +91,15 @@ public class DefaultSingletonBeanRegistry extends SimpleAliasRegistry implements
 	private final Set<String> singletonsCurrentlyInCreation =
 			Collections.newSetFromMap(new ConcurrentHashMap<>(16));
 
-	/** Names of beans currently excluded from in creation checks. */
+	/** 用于保存当前已经排除的创建的实例的名称Names of beans currently excluded from in creation checks. */
 	private final Set<String> inCreationCheckExclusions =
 			Collections.newSetFromMap(new ConcurrentHashMap<>(16));
 
-	/** List of suppressed Exceptions, available for associating related causes. */
+	/** 可用于关联相关原因的抑制异常列表。List of suppressed Exceptions, available for associating related causes. */
 	@Nullable
 	private Set<Exception> suppressedExceptions;
 
-	/** Flag that indicates whether we're currently within destroySingletons. */
+	/** 标志，指示我们当前是否处于“被摧毁的单身汉”中Flag that indicates whether we're currently within destroySingletons. */
 	private boolean singletonsCurrentlyInDestruction = false;
 
 	/** Disposable bean instances: bean name to disposable instance. */
@@ -112,6 +115,12 @@ public class DefaultSingletonBeanRegistry extends SimpleAliasRegistry implements
 	private final Map<String, Set<String>> dependenciesForBeanMap = new ConcurrentHashMap<>(64);
 
 
+	/**
+	 * 注册一个单例
+	 * @param beanName the name of the bean
+	 * @param singletonObject the existing singleton object
+	 * @throws IllegalStateException
+	 */
 	@Override
 	public void registerSingleton(String beanName, Object singletonObject) throws IllegalStateException {
 		Assert.notNull(beanName, "Bean name must not be null");
@@ -316,6 +325,11 @@ public class DefaultSingletonBeanRegistry extends SimpleAliasRegistry implements
 		}
 	}
 
+	/**
+	 * 是否存在
+	 * @param beanName the name of the bean to look for
+	 * @return
+	 */
 	@Override
 	public boolean containsSingleton(String beanName) {
 		return this.singletonObjects.containsKey(beanName);

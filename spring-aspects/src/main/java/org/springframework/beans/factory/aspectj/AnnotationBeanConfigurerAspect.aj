@@ -75,7 +75,7 @@ public aspect AnnotationBeanConfigurerAspect extends AbstractInterfaceDrivenDepe
 	/*
 	 * An intermediary to match preConstructionConfiguration signature (that doesn't expose the annotation object)
 	 */
-	@CodeGenerationHint(ifNameSuffix="bb0")
+//	@CodeGenerationHint(ifNameSuffix="bb0")
 	private pointcut preConstructionConfigurationSupport(Configurable c) : @this(c) && if (c.preConstruction());
 
 

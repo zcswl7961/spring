@@ -41,6 +41,7 @@ import org.springframework.util.ReflectionUtils;
 import org.springframework.util.StringUtils;
 
 /**
+ * 通用工厂内部装载机构，在框架内使用。
  * General purpose factory loading mechanism for internal use within the framework.
  *
  * <p>{@code SpringFactoriesLoader} {@linkplain #loadFactories loads} and instantiates
