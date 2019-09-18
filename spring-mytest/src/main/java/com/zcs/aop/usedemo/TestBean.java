@@ -28,4 +28,10 @@ public class TestBean implements ITest{
 		System.out.println("subTest");
 	}
 
+	@Override
+	public String afterReturn(String a) {
+		return a+"zcg";
+	}
+
+
 }

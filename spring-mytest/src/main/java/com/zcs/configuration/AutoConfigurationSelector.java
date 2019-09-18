@@ -9,7 +9,7 @@ import org.springframework.core.type.AnnotationMetadata;
  */
 public class AutoConfigurationSelector implements DeferredImportSelector{
 	@Override
-	public String[] selectImports(AnnotationMetadata importingClassMetadata) {
+	public String[]  selectImports(AnnotationMetadata importingClassMetadata) {
 		String className = importingClassMetadata.getClassName();
 		System.out.println("========"+className);
 		return new String[]{Selector.class.getName()};

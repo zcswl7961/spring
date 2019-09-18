@@ -9,4 +9,6 @@ public interface ITest {
 	void test();
 
 	void subTest();
+
+	String afterReturn(String a);
 }

@@ -1,5 +1,7 @@
 package com.zcs.aop.annotation;
 
+import com.zcs.aop.usedemo.TestBean;
+import org.springframework.context.annotation.Import;
 import org.springframework.stereotype.Component;
 
 /**
@@ -7,6 +9,7 @@ import org.springframework.stereotype.Component;
  * @date: 2019-05-28
  */
 @Component
+@Import(TestBean.class)
 public class CglibAspectJ {
 
 	@AspectJAnnotation

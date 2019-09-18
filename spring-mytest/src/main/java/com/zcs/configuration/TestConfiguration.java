@@ -8,9 +8,8 @@ import org.springframework.context.annotation.*;
  */
 @Configuration
 @ComponentScan(basePackages = "com.zcs.configuration")
-@ImportResource
-//@Import(AutoConfigurationSelector.class)
-//@Import(NormalImportClass.class) @Import 普通类
+@ImportResource(value = {"classpath:/spring/spring-context.xml"})
+@Import(value = {AutoConfigurationSelector.class,NormalImportClass.class})
 public class TestConfiguration {
 
 	@Bean

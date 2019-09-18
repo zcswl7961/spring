@@ -264,7 +264,7 @@ public class ConfigurationClassPostProcessor implements BeanDefinitionRegistryPo
 	 * （1）被@Configuration或者包含@Bean，@Component，@ComponentScan,@Import,@ImportResource注解的类
 	 * ConfigurationClassUtils.checkConfigurationClassCandidate(beanDefintion,this.metadataReaderFactorty)
 	 * （2）根据@Order对configCandidates列表进行排序
-	 * （3）遍历configCandidates,使用委托类ConfigurationClassParse解析配置项，包含@PropertySource注解解析，@ComponentScan注解解析
+	 * （3）遍历configCandidates,	使用委托类ConfigurationClassParse解析配置项，包含@PropertySource注解解析，@ComponentScan注解解析
 	 * @Import 注解解析，@Bean注解解析
 	 * （4）遍历configCandidates，使用委托类ConfigurationClassBeanDefinitionReader注册解析好的beanDefinitioin
 	 *

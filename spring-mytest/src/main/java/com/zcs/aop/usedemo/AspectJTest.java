@@ -1,5 +1,6 @@
 package com.zcs.aop.usedemo;
 
+import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.*;
 
@@ -30,7 +31,7 @@ public class AspectJTest {
 		System.out.println("afterTest");
 	}
 
-	@Around("subTest()")
+	@Around("test()")
 	public Object aroundTest(ProceedingJoinPoint proceedingJoinPoint) {
 		System.out.println("=========beforeSubTest==========");
 		Object o = null;
@@ -41,5 +42,9 @@ public class AspectJTest {
 		}
 		System.out.println("=========afterSubTest==========");
 		return o;
+	}
+	@AfterReturning(returning="rvt", pointcut="execution(* com.zcs.aop.usedemo.TestBean.afterReturn(..))")
+	public String afterRet(String rvt) {
+		return rvt+" wl";
 	}
 }

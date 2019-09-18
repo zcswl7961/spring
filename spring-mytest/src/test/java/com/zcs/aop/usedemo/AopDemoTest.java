@@ -20,6 +20,8 @@ public class AopDemoTest {
 	public void testAopDemo() {
 			ApplicationContext context = new ClassPathXmlApplicationContext("aopDemo-Test.xml");
 			ITest testBean = (ITest) context.getBean("test");
+//			String returnStr = testBean.afterReturn("test");
+//			System.out.println("returnStr = "+returnStr);
 			testBean.test();
 	}
 }

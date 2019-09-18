@@ -244,6 +244,9 @@ public abstract class AbstractAutoProxyCreator extends ProxyProcessorSupport
 
 	@Override
 	public Object postProcessBeforeInstantiation(Class<?> beanClass, String beanName) {
+		if("test".equals(beanName)) {
+			System.out.println(beanClass.getName());
+		}
 		Object cacheKey = getCacheKey(beanClass, beanName);
 
 		// 判断targetSourcedBeans缓存中是否包含当前beanName，如果不包含，则判断当前bean是否是已经解析过是否需要被代理的bean，
