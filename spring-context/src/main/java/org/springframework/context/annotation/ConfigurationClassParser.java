@@ -568,7 +568,7 @@ class ConfigurationClassParser {
 	}
 
 	/**
-	 * 根据之前parse方法解析到@Imoport中value为ImportSelector的结果，进行处理{@link deferredImportSelectors}
+	 * 根据之前parse方法解析到@Imoport中value为ImportSelector的结果，进行处理
 	 *
 	 */
 	private void processDeferredImportSelectors() {
@@ -658,6 +658,12 @@ class ConfigurationClassParser {
 						 */
 						ParserStrategyUtils.invokeAwareMethods(
 								selector, this.environment, this.resourceLoader, this.registry);
+						/**
+						 * Spring5.1.9的版本中，这一步是
+						 *  if (selector instanceof DeferredImportSelector) {
+						 *		this.deferredImportSelectorHandler.handle(configClass, (DeferredImportSelector) selector);
+						 *	}
+						 */
 						if (this.deferredImportSelectors != null && selector instanceof DeferredImportSelector) {
 							this.deferredImportSelectors.add(
 									new DeferredImportSelectorHolder(configClass, (DeferredImportSelector) selector));
