@@ -230,7 +230,7 @@ public class DefaultBeanDefinitionDocumentReader implements BeanDefinitionDocume
 		}
 		// 是否是嵌套的<beans>标签
 		else if (delegate.nodeNameEquals(ele, NESTED_BEANS_ELEMENT)) {
-			// 递归再去
+			// 递归进去
 			doRegisterBeanDefinitions(ele);
 		}
 	}

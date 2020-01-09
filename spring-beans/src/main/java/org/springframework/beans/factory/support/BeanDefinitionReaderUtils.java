@@ -153,6 +153,7 @@ public abstract class BeanDefinitionReaderUtils {
 
 		// 使用beanName做唯一标识注册
 		String beanName = definitionHolder.getBeanName();
+		// 注册到DefaultListableBeanFactory 中的相关 beanDefinitionMap
 		registry.registerBeanDefinition(beanName, definitionHolder.getBeanDefinition());
 
 		// 注册所有的别名

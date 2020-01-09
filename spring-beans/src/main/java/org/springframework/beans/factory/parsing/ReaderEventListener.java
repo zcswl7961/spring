@@ -19,6 +19,9 @@ package org.springframework.beans.factory.parsing;
 import java.util.EventListener;
 
 /**
+ * 注册beanDefinition完成时的回调监听器，由对应的
+ *
+ *
  * Interface that receives callbacks for component, alias and import
  * registrations during a bean definition reading process.
  *
