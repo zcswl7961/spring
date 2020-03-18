@@ -247,6 +247,10 @@ public abstract class AbstractAutoProxyCreator extends ProxyProcessorSupport
 		if("test".equals(beanName)) {
 			System.out.println(beanClass.getName());
 		}
+		if("women".equals(beanName)) {
+			System.out.println(beanClass.getName());
+		}
+
 		Object cacheKey = getCacheKey(beanClass, beanName);
 
 		// 判断targetSourcedBeans缓存中是否包含当前beanName，如果不包含，则判断当前bean是否是已经解析过是否需要被代理的bean，
@@ -258,7 +262,8 @@ public abstract class AbstractAutoProxyCreator extends ProxyProcessorSupport
 			if (this.advisedBeans.containsKey(cacheKey)) {
 				return null;
 			}
-			if (isInfrastructureClass(beanClass) || shouldSkip(beanClass, beanName)) {
+			boolean infrastructureClass = isInfrastructureClass(beanClass);
+			if (infrastructureClass || shouldSkip(beanClass, beanName)) {
 				this.advisedBeans.put(cacheKey, Boolean.FALSE);
 				return null;
 			}
@@ -315,7 +320,9 @@ public abstract class AbstractAutoProxyCreator extends ProxyProcessorSupport
 			Object cacheKey = getCacheKey(bean.getClass(), beanName);
 			if (!this.earlyProxyReferences.contains(cacheKey)) {
 				// 如果它适合被代理，则需要封装指定bean
-				return wrapIfNecessary(bean, beanName, cacheKey);
+				Object wrapObject = wrapIfNecessary(bean, beanName, cacheKey);
+				System.out.println(wrapObject);
+				return wrapObject;
 			}
 		}
 		return bean;

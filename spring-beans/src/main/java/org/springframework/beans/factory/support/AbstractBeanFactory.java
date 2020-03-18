@@ -286,7 +286,7 @@ public abstract class AbstractBeanFactory extends FactoryBeanRegistrySupport imp
 		 * earlySingletonObjects
 		 * singletonFactories：
 		 * 单例模式下
-		 * spring创建bean的原则是不等bean创建完成就会将闯将bean的ObjectFactory提早曝光
+		 * spring创建bean的原则是不等bean创建完成就会将创建bean的ObjectFactory提早曝光
 		 * 也就是将ObjectFactory加入到缓存中，一旦下个bean创建的时候需要依赖上个bean则直接使用ObjectFactory
 		 */
 		else {

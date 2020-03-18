@@ -1,8 +1,15 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
-	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	   xsi:schemaLocation="http://www.springframework.org/schema/beans    http://www.springframework.org/schema/beans/spring-beans.xsd">
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans    http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
 
 	<import resource="customTag-Test.xml"/>
+
+	<!-- spring aop -->
+	<bean id="test" class="com.zcs.aop.usedemo.TestBean" />
+	<bean class="com.zcs.aop.usedemo.AspectJTest" />
+	<aop:aspectj-autoproxy expose-proxy="true"/>
+
+	<!--<import resource="aopDemo-Test.xml"/>-->
 
 	<alias name="myTestBean" alias="haha, xixi" />
 

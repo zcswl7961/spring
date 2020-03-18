@@ -14,7 +14,7 @@ public class AopLTWDemoTest {
 
 	@Test
 	public void testAopLTWDemo() {
-		ApplicationContext context = new ClassPathXmlApplicationContext("aopDemoStatic-Test.xml");
+		ApplicationContext context = new ClassPathXmlApplicationContext("beanFactoryTest.xml");
 		TestLTWBean testBean = (TestLTWBean) context.getBean("test");
 		testBean.test();
 	}

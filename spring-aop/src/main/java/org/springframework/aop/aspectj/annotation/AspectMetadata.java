@@ -89,6 +89,7 @@ public class AspectMetadata implements Serializable {
 
 		Class<?> currClass = aspectClass;
 		AjType<?> ajType = null;
+		// 说明再基于注解类型的AOP下，对应的增前器的注解@AspectJ 存在继承的关系
 		while (currClass != Object.class) {
 			// get不到会创建返回
 			AjType<?> ajTypeToCheck = AjTypeSystem.getAjType(currClass);

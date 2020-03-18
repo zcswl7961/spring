@@ -20,6 +20,8 @@ import java.io.Serializable;
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import org.aopalliance.intercept.MethodInvocation;
@@ -219,6 +221,12 @@ final class JdkDynamicAopProxy implements AopProxy, InvocationHandler, Serializa
 
 			// 获取当前方法的拦截器链(之前我们找的增强器统一封装成了拦截器链)
 			List<Object> chain = this.advised.getInterceptorsAndDynamicInterceptionAdvice(method, targetClass);
+
+			// ============================Test===============================
+			// 让 AspectJMethodBeforeAdvice 和 AspectJAroundAdvice 位置互换
+			// if (chain.size() > 3) {
+			// 	Collections.swap(chain,2,3);
+			// }
 
 			// Check whether we have any advice. If we don't, we can fallback on direct
 			// reflective invocation of the target, and avoid creating a MethodInvocation.

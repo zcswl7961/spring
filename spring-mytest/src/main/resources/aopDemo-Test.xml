@@ -8,6 +8,7 @@
 
 	<bean id="test" class="com.zcs.aop.usedemo.TestBean" />
 	<bean class="com.zcs.aop.usedemo.AspectJTest" />
+	<bean class="com.zcs.aop.usedemo.AspectJTestB" />
 	<aop:aspectj-autoproxy expose-proxy="true"/>
 
 </beans>
